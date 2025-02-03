@@ -1,0 +1,54 @@
+.envelope {
+    width: 100%;
+    height: 200px;
+    background-color: #f5a9b8;
+    margin: 50px auto;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .front.flap {
+    border-top: 100px solid #e4536f;
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  
+  .front.pocket {
+    width: 100%;
+    height: 100%;
+    background-color: #e4536f;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .letter {
+    width: 280px;
+    height: 180px;
+    background-color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    transition: transform 0.4s ease 0.4s;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .envelope.open .front.flap {
+    transform: rotateX(180deg);
+  }
+  
+  .envelope.open .letter {
+    transform: translateY(-180px);
+  }
+  
+  .text {
+    font-size: 14px;
+    line-height: 1.4;
+  }  
