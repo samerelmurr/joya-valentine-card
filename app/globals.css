@@ -10,5 +10,5 @@
 
 html, body {
   font-size: 10px;
-  max-height: 100svh !important;
+  /* max-height: 100svh !important; */
 }

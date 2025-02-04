@@ -37,10 +37,6 @@
     height: 30px;
   }
 
-  .envelope {
-    width: 70%;
-  }
-
   .envelope-container::before {
     width: 210px;
     height: 210px;
@@ -48,7 +44,7 @@
   }
 
   .envelope-container.open .letter {
-    transform: translateY(-100px) translateZ(50px) scaleX(1.3) scaleY(1.6) !important;
+    transform: translateY(-100px) translateZ(50px) scaleX(1.15) scaleY(1.7) !important;
   }
 }
 
@@ -109,7 +105,7 @@
   max-height: calc(100vh - 40px);
 }
 
-.letter::-webkit-scrollbar-track {
+/* .letter::-webkit-scrollbar-track {
   background-color: #ff9c9ca3;
 }
 
@@ -121,7 +117,7 @@
 .letter::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #fd6a6a;
-}
+} */
 
 .envelope-container.open .letter {
   transform: translateY(-100px) translateZ(50px) scaleX(2) scaleY(2.2);
