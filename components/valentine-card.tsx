@@ -12,7 +12,7 @@ export default function ValentineCard() {
   }
 
   return (
-    <div className="relative w-full h-full container flex items-center justify-center">
+    <div className="relative w-full container flex items-center justify-center">
       <div className={`envelope-container flex items-center justify-center cursor-pointer ${isOpen ? "open" : ""}`} onClick={toggleEnvelope}>
         <div className="envelope flex items-center justify-center">
           <div className="letter">
