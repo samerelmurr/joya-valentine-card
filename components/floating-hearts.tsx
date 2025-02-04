@@ -2,7 +2,6 @@
 
 import type React from "react"
 import "@/styles/valentineAnimations.css"
-// import { JSX, useEffect, useState } from "react"
 
 const FloatingHearts: React.FC = () => {
 
@@ -24,7 +23,7 @@ const FloatingHearts: React.FC = () => {
             &#10084;
         </div>
         <div className="heart">
-        &#10084;
+            &#10084;
         </div>
         <div className="heart">
             &#10084;

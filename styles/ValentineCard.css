@@ -1,54 +1,190 @@
-.envelope {
-    width: 100%;
-    height: 200px;
-    background-color: #f5a9b8;
-    margin: 50px auto;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .front.flap {
-    border-top: 100px solid #e4536f;
-    border-right: 150px solid transparent;
-    border-left: 150px solid transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: top;
-    transition: transform 0.4s ease;
-  }
-  
-  .front.pocket {
-    width: 100%;
-    height: 100%;
-    background-color: #e4536f;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-  
-  .letter {
+.container::before{
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 265px;
+  animation: scale 3s ease-in-out infinite;
+}
+.envelope-container {
+  width: 300px;
+  height: 200px;
+  margin: 2rem auto;
+  perspective: 1000px;
+}
+
+.envelope-container::before {
+  content: "";
+  position: absolute;
+  width: 213px;
+  height: 213px;
+  background-color: hsl(348.1578947368421, 79.16666666666671%, 81.17647058823529%);
+  transform: rotate(45deg);
+  top: -100px;
+  border-radius: 30px 0 0 0;
+}
+
+@media (max-width: 700px) {
+  .envelope-container {
     width: 280px;
-    height: 180px;
-    background-color: white;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    transition: transform 0.4s ease 0.4s;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
+    height: 195px;
   }
-  
-  .envelope.open .front.flap {
-    transform: rotateX(180deg);
+
+  .container::before{
+    width: 250px;
+    height: 30px;
   }
-  
-  .envelope.open .letter {
-    transform: translateY(-180px);
+
+  .envelope-container::before {
+    width: 210px;
+    height: 210px;
+    top: -104px;
   }
-  
-  .text {
-    font-size: 14px;
-    line-height: 1.4;
-  }  
+}
+
+.envelope-container:not(.open) {
+  animation: float 3s ease-in-out infinite;
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  background-color: hsl(348.1578947368421, 79.16666666666671%, 81.17647058823529%);
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 5px;
+  box-shadow: 0 10px 25px hsla(0, 0%, 0%, 0.1);
+  transition: transform 0.6s ease;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  border-left: 300px solid hsl(348.1578947368421, 79.16666666666671%, 81.17647058823529%);
+  border-top: 195px solid transparent;
+  z-index: 1;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  border-left: 300px solid hsl(348.1578947368421, 79.16666666666671%, 81.17647058823529%);
+  border-top: 195px solid transparent;
+  z-index: 1;
+  -moz-transform:    scaleX(-1); /* Gecko */
+  -o-transform:      scaleX(-1); /* Opera */
+  -webkit-transform: scaleX(-1); /* Webkit */
+  transform:         scaleX(-1); /* Standard */
+  filter: FlipH;                 /* IE 6/7/8 */
+}
+
+.envelope-container.open .envelope {
+  transform: rotateX(0deg);
+}
+
+.letter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: hsl(0, 0%, 100%);
+  border: 1px dashed hsl(0, 0%, 40%);
+  padding: 20px;
+  text-align: center;
+  transform-origin: top;
+  transition: all 0.4s ease 0.3s;
+  transform: rotateX(0deg) translateY(0) translateZ(0);
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+}
+
+.letter::-webkit-scrollbar-track {
+  background-color: #ff9c9ca3;
+}
+
+.letter::-webkit-scrollbar {
+  width: 10px;
+  background-color: #fff5f5;
+}
+
+.letter::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fd6a6a;
+}
+
+.envelope-container.open .letter {
+  transform: translateY(-100px) translateZ(50px) scaleX(2) scaleY(2.2);
+  height: auto;
+}
+
+.heartCard {
+  width: 20px;
+  height: 20px;
+  background: hsl(348.3333333333333, 100%, 64.70588235294117%);
+  transform: rotate(45deg);
+  margin: 10px auto;
+  position: relative;
+}
+
+.heartCard:before,
+.heartCard:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: hsl(348.3333333333333, 100%, 64.70588235294117%);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heartCard:before {
+  left: -10px;
+}
+
+.heartCard:after {
+  top: -10px;
+  right: 0;
+}
+
+.full-message {
+  opacity: 0;
+  transition: opacity 0.4s ease 0.6s;
+  max-height: 0;
+  overflow: none;
+}
+
+.full-message.visible {
+  opacity: 1;
+  max-height: 100vh;
+}
+
+.letter-content {
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.envelope-container.open .letter-content {
+  opacity: 1;
+  overflow: visible;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes scale{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.85);
+    }
+}
